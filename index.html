@@ -10,6 +10,7 @@
 </head>
 
 <body>
+  <input id="unity-input-field" type=text name="text">
   <div id="unity-container" class="unity-desktop">
     <canvas id="unity-canvas" width=960 height=600></canvas>
     <div id="unity-loading-bar">
@@ -134,6 +135,12 @@
           unityInstance.SendMessage("Init", "SetData", JSON.stringify(JSData));
         });
         unityInstance.SendMessage("Init", "SetData", JSON.stringify(JSData));
+
+        const unityInputField = document.getElementById("unity-input-field");
+        unityInputField.onchange = (e) => {
+          const text = e.target.value;
+          unityInstance.SendMessage("Init", "ReceiveInput", text);
+        };
       }).catch((message) => {
         alert(message);
       });
