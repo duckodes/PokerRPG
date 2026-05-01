@@ -135,12 +135,6 @@
           unityInstance.SendMessage("Init", "SetData", JSON.stringify(JSData));
         });
         unityInstance.SendMessage("Init", "SetData", JSON.stringify(JSData));
-
-        const unityInputField = document.getElementById("unity-input-field");
-        unityInputField.onchange = (e) => {
-          const text = e.target.value;
-          unityInstance.SendMessage("Init", "ReceiveInput", text);
-        };
       }).catch((message) => {
         alert(message);
       });
